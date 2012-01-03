@@ -64,3 +64,5 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Adaptive\UserBundle\Entity\User
+    group:
+        group_class: Adaptive\UserBundle\Entity\Group
