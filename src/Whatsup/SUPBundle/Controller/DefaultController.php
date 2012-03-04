@@ -13,7 +13,7 @@ class DefaultController extends Controller
      * @Template()
      */
     public function indexAction(){
-		$response = $this->forward('WhatsupSUPBundle:Event:Index', array());
+		$response = $this->forward('WhatsupSUPBundle:Event:index', array());
 
 	    return $response;
     }
