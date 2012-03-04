@@ -3,11 +3,74 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+			<link rel="stylesheet" href="/css/jquery-ui.css" type="text/css" media="screen" title="no title" charset="utf-8">
+			<link rel="stylesheet" href="/css/main.css" type="text/css" media="screen" title="no title" charset="utf-8">
+			<link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection">
+			<link rel="stylesheet" href="/css/print.css" type="text/css" media="print">
+			<link rel="stylesheet" href="/css/calendar.css" type="text/css" media="screen" title="no title" charset="utf-8">
+			<!--[if lt IE 8]>
+			  <link rel="stylesheet" href="/css/ie.css" type="text/css" media="screen, projection">
+			<![endif]-->
+		    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+		    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+			<script type='text/javascript' src='/js/jquery/jquery-ui-1.8.17.custom.min.js'></script>
+		{% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+		{% block header %}
+
+		<header class="orangeBG">
+		
+			<div class="container" style="padding:5px;">
+				<div>
+					<img src="/bundles/whatsupsup/img/WUOutline.png" class="left" style="width:40px; height:40px;">
+					<div style="font-size:24px; padding-left:5px;" class="logoText left">
+						<span style="font-weight:bold">Whats</span>Up!
+					</div>
+				</div>
+				
+				<div class="right">
+					<ul id='nav'>
+						<li><a href="#">Search</a></li>
+						<li><a href="#">Spread</a></li>
+						<li><a href="#">Account</a></li>
+									
+		        		   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			                <li>
+								{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+				                <a href="{{ path('fos_user_security_logout') }}">
+				                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+				                </a>
+							</li>
+			            {% else %}
+			                <li>
+								<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+			            	</li>
+						{% endif %}
+					</ul>
+				</div>
+	        </div>
+		</header>
+		{% endblock  %}
+		
+		{% for key, message in app.session.getFlashes() %}
+        <div class="{{ key }}">
+            {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+        {% endfor %}
+		
+		<div style="padding-top:10px;">
+        {% block body %}
+		{% endblock %}
+		</div>
+		
+		{% block footer %}
+			<footer style="bottom:0; width:100%; position:relative" class="orangeBG">
+				&nbsp;
+			</footer>
+		{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

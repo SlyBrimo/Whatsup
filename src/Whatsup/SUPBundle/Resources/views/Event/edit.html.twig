@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<form action="{{ path('event_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}
+    <p>
+        <button type="submit">Edit</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('event') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('event_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+		{% if entity.flyer %}<img src="/{{ entity.flyer.webpath }}" class="logoMaxSize">{% endif %}
+    </li>
+</ul>
+<script>
+$(function() {
+    $( "#event_startdate" ).datepicker();
+    $( "#event_enddate" ).datepicker();
+});
+</script>
+
+{% endblock %}

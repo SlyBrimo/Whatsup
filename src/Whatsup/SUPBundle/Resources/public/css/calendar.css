@@ -1,0 +1,16 @@
+#calendar, #calendar table{
+	width:100%;
+}
+
+#calendar td{
+	height:80px;
+	border:1px solid #CCC;
+	border-collapse:collapse;
+	border-spacing:0;
+	padding:5px;
+	width:12%;
+}
+
+#calendar .dayNum{
+	float:right;
+}

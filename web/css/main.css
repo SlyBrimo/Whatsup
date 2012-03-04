@@ -1,0 +1,64 @@
+.orangeBG{
+	background: #FFA941;
+}
+
+.orangeBorder{ border-color: #FFA941; border-style:solid; }
+
+header{
+	margin-bottom:10px;
+}
+
+footer{
+	margin-top:10px;
+	position:absolute;
+}
+
+.roundedCorners{
+	-moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.roundedCornersTop{
+	-moz-border-radius: 20px 20px 0 0;
+    -webkit-border-radius: 20px 20px 0 0;
+    -khtml-border-radius: 20px 20px 0 0;
+    border-radius: 20px 20px 0 0;
+}
+
+.logoMaxSize{
+	width:150px; height:150px; padding:0 10px 0 0; float:left;
+}
+
+.error_list li{
+	background:red;
+	padding:5px;
+	color:white;
+}
+
+li{ list-style:none;}
+
+ul#nav li{
+	float:left;
+}
+
+ul#nav li a{
+	color:white;
+	text-decoration:none;
+	font-size:18px;
+	padding:10px;
+}
+
+ul#nav li a:hover{
+	color:blue;
+}
+
+#eventDisplayNav li{ float:left; 	}
+#eventDisplayNav li a{ padding:5px 10px; display:block; color:white; background:orange; }
+#eventDisplayNav li:hover a, #eventDisplayNav .current a{ background:#FFD999; color:orange;}
+#eventSearchForm input#search_keywords{ font-size:18px;}
+.gallery li{ visibility:hidden;}
+.gallery li.current { visibility:visible }
+.galleryTabs div { background:#FFF; border-bottom:1px solid orange; padding:5px; }
+.galleryTabs div.current { background:#FFA941;}

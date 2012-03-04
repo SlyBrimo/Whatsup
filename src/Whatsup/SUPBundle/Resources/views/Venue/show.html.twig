@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<link rel='stylesheet' type='text/css' href='/css/fullcalendar.css' />
+<link rel='stylesheet' type='text/css' href='/css/fullcalendar.print.css' media='print' />
+<script type='text/javascript' src='/js/fullcalendar/fullcalendar.min.js'></script>
+
+<div class="container orangeBorder roundedCorners" style="border-width:1px">
+	<div class="span-15">
+
+	{% if venue.image %}<img src="/{{ venue.image.webpath }}" style="max-width:100px; max-height:100px; float:left;">{% endif %}
+	{{ venue.name }}<br>
+	{{ venue.phone }}<br><br>
+	{{ venue.address }}<br>
+	{{ venue.city }},
+	{{ venue.state }}
+	{{ venue.zip }}<br><br>
+	<a href="{{ venue.website }}">{{ venue.website }}</a>	<br><br>
+	
+	</div>
+
+
+	<div class="clear span-24">
+		<div id='loading' style='display:none'>loading...</div>
+		<div id='calendar'></div>
+	</div>
+
+	<div style="float:left; clear:left;"><br>
+		<a href="<?php echo url_for('event/new') ?>">New Event</a>
+	</div>
+
+</div>
+
+<script type='text/javascript'>
+
+	$(document).ready(function() {
+		$('#calendar').fullCalendar({
+			theme: true,
+			editable: true,
+			events: "/venue/{{ venue.id }}/events.json",
+			eventDrop: function(event, delta) {
+				alert(event.title + ' was moved ' + delta + ' days\n' +
+					'(should probably update your database)');
+			},
+			loading: function(bool) {
+				if (bool) $('#loading').show();
+				else $('#loading').hide();
+			}
+		});	
+	});
+
+</script>
+<style type='text/css'>
+
+	body {
+		text-align: center;
+		font-size: 14px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+	}
+		
+	#loading {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		}
+
+	#calendar {
+		width: 900px;
+		margin: 0 auto;
+		}
+
+</style>
+{% endblock %}

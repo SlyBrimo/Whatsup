@@ -1,0 +1,7 @@
+label, input, select, textarea{
+	margin:10px;
+}
+
+th{
+	float:left;
+}

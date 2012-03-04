@@ -1,0 +1,17 @@
+/*reset*/
+#header{
+	height:50px;
+	width:100%;
+	background:none;
+	margin-bottom:25px;
+}
+
+#header ul{
+	float:right;
+	list-style:none;
+}
+
+#header ul li{
+	padding:10px;
+	float:left;
+}
